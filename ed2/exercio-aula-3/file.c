@@ -1,9 +1,9 @@
 #include <stdio.h>
 
-typedef struct _pessoa {
+typedef struct aluno {
   char nome[10];
   int idade;
-  int filhos;
+  int nro_Unesp;
 } _pessoa;
 
 int main() {
@@ -13,8 +13,8 @@ int main() {
   for(int i = 0; i < 2; i++) {
     scanf("%s", pessoa[i].nome);
     scanf("%d", &pessoa[i].idade);
-    scanf("%d", &pessoa[i].filhos);
-    fprintf(fp, "%s %d %d\n", pessoa[i].nome, pessoa[i].idade , pessoa[i].filhos);
+    scanf("%d", &pessoa[i].nro_Unesp);
+    fprintf(fp, "%s %d %d\n", pessoa[i].nome, pessoa[i].idade , pessoa[i].nro_Unesp);
   }
 
   fclose(fp);
@@ -23,7 +23,7 @@ int main() {
   for(int i = 0; i < 2; i++) {
     fscanf(fp, "%s", pessoa[i].nome);
     fscanf(fp, "%d", &pessoa[i].idade);
-    fscanf(fp, "%d", &pessoa[i].filhos);
+    fscanf(fp, "%d", &pessoa[i].nro_Unesp);
   }
   
 
