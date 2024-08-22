@@ -4,16 +4,29 @@ def convert10to2(num):
     if any(c in '/-;' for c in num) or num.count(',') + num.count('.') > 1:
         return "Número Inválido"
 
-    if ',' in num or '.' in num:
-        int_part, mantissa = map(float, num.replace(',', '.').split('.'))
+    num = num.replace(',', '.')
+
+    if '.' in num:
+        int_part, mantissa = map(float, num.split('.'))
+        mantissa = float('0.' + str(int(mantissa)))
     else:
         int_part, mantissa = int(num), 0
 
-    int_bin = bin(int(int_part))[2:]
+    int_part = int(int_part)
+    int_bin = []
+    while int_part != 0:
+        int_bin.append(int_part % 2)
+        int_part //= 2
+    
+    int_bin.reverse()
+    int_bin = ''.join(map(str, int_bin)) if int_bin else '0'
+
+    int_bin = int_bin.rstrip('0')
+    if not int_bin:  # Caso todo o binário seja zero
+        int_bin = '0'
 
     man_bin = ''
     if mantissa:
-        mantissa /= 10 ** len(str(int(mantissa)))
         for _ in range(10):
             mantissa *= 2
             bit = floor(mantissa)
@@ -39,6 +52,14 @@ try:
   print("Passou em todos os testes! :D")
 
 except AssertionError:
+  print(convert10to2("95"), 
+        convert10to2("123.234"),
+        convert10to2("37.52"),
+        convert10to2("0.625"),
+        convert10to2("-21,12"),
+        convert10to2("12/7"),
+        convert10to2("23.43,2"), 
+        convert10to2("20;30"))
   print( "Falhou em um ou mais testes... :(")
   raise
 
@@ -56,13 +77,17 @@ def convert2to10(num):
     else:
         int_part, frac_part = num, ''
 
-    dec_int_part = int(int_part, 2)
+    int_dec = 0
+    for i, digit in enumerate(int_part):
+        int_dec +=  int(int(digit) * int(2 ** int(len(int_part) - i - 1)))
 
-    dec_frac_part = 0
-    for i, digit in enumerate(frac_part):
-        dec_frac_part += int(digit) * (2 ** -(i + 1))
+    man_dec = 0
+    if(frac_part):
+        for i, digit in enumerate(frac_part):
+            man_dec += float(float(digit) * float(2 ** -(i + 1)))
 
-    return dec_int_part + dec_frac_part
+
+    return float(int_dec + man_dec) if man_dec else int_dec
 
 # @title **Código de teste para Atividade 2**
 try:
@@ -78,5 +103,4 @@ try:
   print("Passou em todos os testes! :D")
 
 except AssertionError:
-  print( "Falhou em um ou mais testes... :(")
-  raise
+  print( "Falhou em um ou mais testes... :(", convert2to10("100101.1000010100"), convert2to10("0.10011"), convert2to10("10100011"), convert2to10("11011.111"), convert2to10("-101.111"), convert2to10("120.111"), convert2to10("23.43,2"), convert2to10("-101.1101,101"))
