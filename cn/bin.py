@@ -22,7 +22,7 @@ def convert10to2(num):
     int_bin = ''.join(map(str, int_bin)) if int_bin else '0'
 
     int_bin = int_bin.rstrip('0')
-    if not int_bin:  # Caso todo o binário seja zero
+    if not int_bin:  
         int_bin = '0'
 
     man_bin = ''
@@ -71,7 +71,6 @@ def convert2to10(num):
     if any(c not in '01.,' for c in num) or num.count(',') + num.count('.') > 1:
         return "Número inserido não é binário."
 
-    # Splitting integer and fractional parts
     if ',' in num or '.' in num:
         int_part, frac_part = num.replace(',', '.').split('.')
     else:
@@ -103,4 +102,4 @@ try:
   print("Passou em todos os testes! :D")
 
 except AssertionError:
-  print( "Falhou em um ou mais testes... :(", convert2to10("100101.1000010100"), convert2to10("0.10011"), convert2to10("10100011"), convert2to10("11011.111"), convert2to10("-101.111"), convert2to10("120.111"), convert2to10("23.43,2"), convert2to10("-101.1101,101"))
+  print( "Falhou em um ou mais testes... :(")
