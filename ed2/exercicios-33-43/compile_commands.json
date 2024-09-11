@@ -1,0 +1,14 @@
+[
+  {
+    "arguments": [
+      "/sbin/gcc",
+      "-c",
+      "-o",
+      "33",
+      "33.c"
+    ],
+    "directory": "/home/felipe-gsilva/.dev/bcc/ed2/exercicios-33-43",
+    "file": "/home/felipe-gsilva/.dev/bcc/ed2/exercicios-33-43/33.c",
+    "output": "/home/felipe-gsilva/.dev/bcc/ed2/exercicios-33-43/33"
+  }
+]
