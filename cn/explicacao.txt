@@ -1,3 +1,0 @@
-Fiz essa atividade na minha máquina pessoal, apenas colocando neste notebook após terminá-la. 
-- Fica a informação de que o input no notebook estava com um bug chato, por isso o removi, mas os testes estão perfeitamente funcionais.
-- segue em anexo um link para meu repositório no github com a atividade desenvolvida.
